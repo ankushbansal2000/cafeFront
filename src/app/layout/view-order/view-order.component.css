@@ -1,0 +1,45 @@
+.mainWrap {
+    float: left;
+    overflow: hidden;
+    max-width: 100%;
+}   
+
+.tableWrap {
+    float: left;
+    width: 100%;
+    padding: 10px;
+}
+
+
+td, th {
+    padding: 4px !important;
+    font-size: 12px;
+  }
+  
+  table,
+  tr td {
+    border: 1px solid #E9ECEF;
+  }
+  
+  tbody {
+    display: block !important;
+    overflow-y: overlay !important;
+    max-height: 440px !important;
+  }
+  
+  thead,
+  tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    position: relative !important;
+  }
+  
+  thead {
+    width: 100%;
+  }
+  
+  table {
+    width: auto !important;
+  }
+  

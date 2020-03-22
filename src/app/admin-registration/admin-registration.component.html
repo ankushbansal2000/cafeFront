@@ -1,0 +1,51 @@
+<div class="mainWrap">
+    <div class="container">
+       
+        <div class="mainDiv"> 
+
+            <div class="rowWrap">
+                <div class="labelWrap">
+                    Name :
+                </div>
+                <div class="inputWrap">
+                    <input type="text" [(ngModel)]="newRegistration.name" #name="ngModel" name="name" 
+                    class="form-control">
+                </div>
+            </div>
+
+            <div class="rowWrap">
+                <div class="labelWrap">
+                   Phone Number :
+                </div>
+                <div class="inputWrap">
+                    <input type="number" [(ngModel)]="newRegistration.phoneNo" #phoneNo="ngModel" name="phoneNo" class="form-control">
+                </div>
+            </div>
+
+            <div class="rowWrap">
+                <div class="labelWrap">
+                   Email :
+                </div>
+                <div class="inputWrap">
+                    <input type="text" [(ngModel)]="newRegistration.email" name="email" #email="ngModel" class="form-control">
+                </div>
+            </div>
+
+            <div class="rowWrap">
+                    <div class="labelWrap">
+                       Password :
+                    </div>
+                    <div class="inputWrap">
+                        <input type="text" [(ngModel)]="newRegistration.password" name="password" #password="ngModel" class="form-control">
+                    </div>
+            </div>
+
+
+            <div class="buttonWrap">
+                <div class="buttonWrapMemory">
+                <button class="btn btn-primary" (click)="onSubmit(newRegistration)">Save</button>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

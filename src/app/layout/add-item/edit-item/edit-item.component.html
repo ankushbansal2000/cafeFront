@@ -1,0 +1,68 @@
+<div class="mainWrap">
+    <div class="headWrap">
+            <div class="titleHeadWrap">
+                Edit Item
+            </div>
+            <div class="buttonHeadWrap">
+                <button class="btn btn-primary" (click)="goBack()" >Go Back</button>
+            </div>
+        </div>
+<div class="container">
+   
+    <div class="mainDiv">
+
+
+        <div class="rowWrap">
+            <div class="labelWrap">
+                Dish Name :
+            </div>
+            <div class="inputWrap">
+                <input type="text" name="name" #name="ngModel" (change)="onDishNameChanges($event)" [(ngModel)]="addItems.name" class="form-control">
+            </div>
+        </div>
+
+        <div class="rowWrap">
+            <div class="labelWrap">
+               Price :
+            </div>
+            <div class="inputWrap">
+                <input type="text" name="price" #price="ngModel" (change)="onPriceChanges($event)" [(ngModel)]="addItems.price" class="form-control">
+            </div>
+        </div>
+
+        <div class="rowWrap">
+            <div class="labelWrap">
+               Quantity :
+            </div>
+            <div class="inputWrap">
+                <input type="text" name="quantity" #quantity="ngModel" (change)="onQuantityChanges($event)" [(ngModel)]="addItems.quantity"  class="form-control">
+            </div>
+        </div>
+
+        <div class="rowWrap">
+                <div class="labelWrap">
+                  Photo:
+                </div>
+                <div class="inputWrap">
+                    
+                   <input type="file" name="image" (change)="onPhotoChanges($event)"  class="form-control">
+                </div>
+        </div>
+
+        <div class="rowWrap">
+            <div class="labelWrap">
+              Description :
+            </div>
+            <div class="inputWrap">
+                <input type="text" name="desc" #desc="ngModel" (change)="onDescriptionChanges($event)" [(ngModel)]="addItems.desc" class="form-control">
+            </div>
+        </div>
+
+        <div class="buttonWrap">
+            <div class="buttonWrapMemory">
+            <button class="btn btn-primary" (click)="addItem(addItems)">Save</button>
+        </div>
+        </div>
+    </div>
+</div>
+</div>

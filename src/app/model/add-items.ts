@@ -6,3 +6,15 @@ export class AddItems {
     image: string;
     desc: string;
 } 
+
+export class OrderItems {
+    id: number;
+    email: string;
+    order: OrderData;
+}
+export class OrderData {
+    id:number;
+    email: string; 
+    name: string;
+    quantity: string;
+}

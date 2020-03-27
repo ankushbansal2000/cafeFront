@@ -1,25 +1,16 @@
 <div class="tableWrap">
     <div class="table-responsive">
-    <table class="table table-hover table-bordered">
-        <tr>
-            <th style="width: 125px">Roll Number</th>
-            <th style="width: 125px">Mobile</th>
-            <th style="width: 125px">Dish</th>
-            <th style="width: 125px">Mobile Number</th>
-            <th style="width: 125px">Accept</th>
-            <th style="width: 125px">Delete</th>
-        </tr>
-        <tr>
-            <td>101</td>
-            <td>Ankush</td>
-            <td>Omlete * 1</td>
-            <td>8295581106</td>
-            <td>
-                <button class="btn btn-primary" routerLink="admit">Accept</button>
-            </td>
-            <td>
-                <button class="btn btn-primary" routerLink="admit">Delete</button>
-            </td>
-        </tr>
-    </table>
-</div></div>
+        <table class="table table-hover table-bordered">
+            <tr>
+                <th style="width: 125px">Email Id</th>
+                <th style="width: 125px">Item Name</th>
+            </tr>
+            <tr *ngFor="let item of array">
+                <td>{{item.email}}</td>
+                <td>
+                <div *ngFor="let i of item.order">{{i.name}} * {{i.quantity}}</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -11,40 +11,36 @@ import { Location } from '@angular/common';
 })
 export class EditItemComponent implements OnInit {
   chargeId: number;
-  public addItems = {} as AddItems[];
-  name: string;
-  price: string;
-  quantity: string;
+  public addItems = {} as AddItems;
   image: File;
-  desc: string; 
-  constructor(public activeRoute: ActivatedRoute,public location: Location , private apiService: AuthService) { }
+  dummy: AddItems;
+  constructor(public activeRoute: ActivatedRoute, public location: Location, private apiService: AuthService) { }
 
-  ngOnInit() { 
+  ngOnInit() {
     this.chargeId = this.activeRoute.snapshot.params['id'];
-    console.log(this.chargeId);
+    this.dummy = new AddItems();
     this.getItemForUpdate();
   }
   onDescriptionChanges(event) {
-    this.desc = event.target.value;
+    this.addItems.desc = event.target.value;
   }
   onPhotoChanges(event) {
     this.image = event.target.files[0];
   }
   onQuantityChanges(event) {
-    this.quantity = event.target.value;
+    this.addItems.quantity = event.target.value;
   }
-  onPriceChanges (event) {
-    this.price = event.target.value;
+  onPriceChanges(event) {
+    this.addItems.price = event.target.value;
   }
-  onDishNameChanges (event) {
-    this.name = event.target.value;
+  onDishNameChanges(event) {
+    this.addItems.name = event.target.value;
   }
   goBack() {
     this.location.back();
   }
   getItemForUpdate() {
     this.apiService.getItemForUpdate(this.chargeId).subscribe(data => {
-      console.log(data);
       this.addItems = data;
     },
       error => {
@@ -53,19 +49,24 @@ export class EditItemComponent implements OnInit {
   }
 
 
-  addItem() {
-    const uploadData = new FormData();
-    uploadData.append('name', this.name);
-    uploadData.append('price', this.price);
-    uploadData.append('quantity', this.quantity);
-    uploadData.append('desc', this.desc);
-    uploadData.append('image', this.image, this.image.name);
-    this.apiService.putItemForUpdate(uploadData).subscribe(data => {
-      console.log(data);
+  updateItem(uploadData) {
+    uploadData = new FormData();
+    uploadData.append('name', this.addItems.name);
+    uploadData.append('price', this.addItems.price);
+    uploadData.append('quantity', this.addItems.quantity);
+    uploadData.append('desc', this.addItems.desc);
+    if (this.image == undefined) {
+      uploadData.append('image', this.addItems.image);
+    } else {
+      uploadData.append('image', this.image, this.image.name);
+    }
+    this.apiService.putItemForUpdate(this.chargeId, uploadData).subscribe(data => {
       location.reload();
     },
       error => {
         alert(error.error.text);
       });
   }
+
+
 }

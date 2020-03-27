@@ -19,7 +19,7 @@ export class AddItemComponent implements OnInit {
   desc: string; 
   itemList: Array<AddItems>;
   ngOnInit() {
-    this.getItem();
+    this.getItem(); 
   }
 
   onDescriptionChanges(event) {
@@ -46,7 +46,6 @@ export class AddItemComponent implements OnInit {
     uploadData.append('desc', this.desc);
     uploadData.append('image', this.image, this.image.name);
     this.apiService.addItems(uploadData).subscribe(data => {
-      console.log(data);
       location.reload();
     },
       error => {
@@ -55,7 +54,6 @@ export class AddItemComponent implements OnInit {
   }
   getItem() {
     this.apiService.getItems().subscribe(data => {
-      console.log(data);
       this.itemList = data;
     },
       error => {

@@ -45,12 +45,14 @@ export class AddItemComponent implements OnInit {
     uploadData.append('quantity', this.quantity);
     uploadData.append('desc', this.desc);
     uploadData.append('image', this.image, this.image.name);
-    this.apiService.addItems(uploadData).subscribe(data => {
-      location.reload();
-    },
-      error => {
-        alert(error.error.text);
-      });
+    console.log(uploadData);
+  this.apiService.addItems(uploadData).subscribe(data => {
+    console.log(data);
+    //location.reload();
+  },
+    error => {
+      alert(error.error.text);
+    });
   }
   getItem() {
     this.apiService.getItems().subscribe(data => {

@@ -25,6 +25,7 @@ export class EditItemComponent implements OnInit {
     this.addItems.desc = event.target.value;
   }
   onPhotoChanges(event) {
+    console.log(event);
     this.image = event.target.files[0];
   }
   onQuantityChanges(event) {
@@ -56,9 +57,9 @@ export class EditItemComponent implements OnInit {
     uploadData.append('quantity', this.addItems.quantity);
     uploadData.append('desc', this.addItems.desc);
     if (this.image == undefined) {
-      uploadData.append('image', this.addItems.image);
+   //   uploadData.append('image', this.addItems.image);
     } else {
-      uploadData.append('image', this.image, this.image.name);
+     // uploadData.append('image', this.image, this.image.name);
     }
     this.apiService.putItemForUpdate(this.chargeId, uploadData).subscribe(data => {
       location.reload();

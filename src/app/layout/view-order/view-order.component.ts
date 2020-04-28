@@ -1,4 +1,4 @@
-import { OrderItems, OrderData } from './../../model/add-items';
+import { OrderItems, OrderData, OrderItem } from './../../model/add-items';
 import { AuthService } from './../../service/auth.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,10 +10,11 @@ import { Component, OnInit } from '@angular/core';
 export class ViewOrderComponent implements OnInit {
   public updateOrder = {} as OrderItems;
   public object = {} as OrderItems;
-  public dummy : OrderItems[];
+  public dummy : OrderItem[];
   public array : OrderItems[]=[];
+  public arr : OrderData[]=[];
   constructor(private apiService : AuthService) { }
-
+  str: string;
   ngOnInit() {
     this.getApiForUpdate();
   }
@@ -24,9 +25,13 @@ export class ViewOrderComponent implements OnInit {
       this.dummy.forEach(value => {
         this.object = new OrderItems;
         this.object.email = value.email;
+        console.log(value);
         this.object.order = JSON.parse(value.order);
-        this.array.push(this.object);
-      })
+    //    this.object.order = JSON.parse(value.order);
+       console.log(this.object)
+       this.array.push(this.object);
+      }) 
+    console.log(this.array);
     },
       error => {
         alert(error.error.text);

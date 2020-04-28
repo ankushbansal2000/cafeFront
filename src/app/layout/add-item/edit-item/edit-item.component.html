@@ -17,7 +17,7 @@
                 Dish Name :
             </div>
             <div class="inputWrap">
-                <input type="text" name="name" #name="ngModel" (change)="onDishNameChanges($event)" [(ngModel)]="addItems.name" class="form-control">
+                <input type="text" name="name" #name="ngModel" [(ngModel)]="addItems.name" class="form-control">
             </div>
         </div>
 
@@ -26,7 +26,7 @@
                Price :
             </div>
             <div class="inputWrap">
-                <input type="text" name="price" #price="ngModel" (change)="onPriceChanges($event)" [(ngModel)]="addItems.price" class="form-control">
+                <input type="text" name="price" #price="ngModel"  [(ngModel)]="addItems.price" class="form-control">
             </div>
         </div>
 
@@ -35,7 +35,7 @@
                Quantity :
             </div>
             <div class="inputWrap">
-                <input type="text" name="quantity" #quantity="ngModel" (change)="onQuantityChanges($event)" [(ngModel)]="addItems.quantity"  class="form-control">
+                <input type="text" name="quantity" #quantity="ngModel"  [(ngModel)]="addItems.quantity"  class="form-control">
             </div>
         </div>
 
@@ -44,9 +44,14 @@
                   Photo:
                 </div>
                 <div class="inputWrap">
-                    
-                   <input type="file" name="image" (change)="onPhotoChanges($event)"  class="form-control">
-                </div>
+                        <input type="file" (change)="onPhotoChanges($event)" name="image" #image class="form-control">
+    
+                    </div>
+                    <div class="preview" *ngIf="addItems.image">
+                        <div class="previewimage">
+                            <img id="imagesrc" src="{{addItems.image}}" #fileInput>
+                        </div>
+                    </div>
         </div>
 
         <div class="rowWrap">
@@ -54,7 +59,7 @@
               Description :
             </div>
             <div class="inputWrap">
-                <input type="text" name="desc" #desc="ngModel" (change)="onDescriptionChanges($event)" [(ngModel)]="addItems.desc" class="form-control">
+                <input type="text" name="desc" #desc="ngModel" [(ngModel)]="addItems.desc" class="form-control">
             </div>
         </div>
 

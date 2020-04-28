@@ -10,8 +10,15 @@ export class AddItems {
 export class OrderItems {
     id: number;
     email: string;
-    order: OrderData;
+    order: OrderData[];
 }
+
+export class OrderItem {
+    id: number;
+    email: string;
+    order: string;
+}
+
 export class OrderData {
     id:number;
     email: string; 

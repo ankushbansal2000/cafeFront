@@ -1,4 +1,4 @@
-import { AddItems, OrderItems } from './../model/add-items';
+import { AddItems, OrderItems, OrderItem } from './../model/add-items';
 import { AdminLoginRegistration } from './../model/admin-login-registration';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -16,14 +16,16 @@ export class AuthService {
     return this.httpClient.post(this.baseUrl + '/admindetail/', employee, { headers: this.httpHeaders });
   }
 
-  addItems(item: FormData) {
+  addItems(item: AddItems) {
     return this.httpClient.post(this.baseUrl + '/router/itemdetail/', item);
   }
-
+  addImage(item: FormData){
+    return this.httpClient.post(this.baseUrl + '/router/itemimage/', item);
+  }
   getItemForUpdate(id) {
     return this.httpClient.get<AddItems>(this.baseUrl + '/router/itemdetail/' + id + '/', { headers: this.httpHeaders });
   }
-  putItemForUpdate(id, data) {
+  putItemForUpdate(id, data: AddItems) {
     return this.httpClient.put<AddItems[]>(this.baseUrl + '/router/itemdetail/' + id + '/', data);
   }
 
@@ -35,7 +37,7 @@ export class AuthService {
     return this.httpClient.get<AddItems[]>(this.baseUrl + '/router/itemdetail/');
   }
   getItemForData() {
-    return this.httpClient.get<OrderItems[]>(this.baseUrl + '/orderdetail/get/');
+    return this.httpClient.get<OrderItem[]>(this.baseUrl + '/orderdetail/get/');
   }
 
 }

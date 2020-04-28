@@ -1,86 +1,97 @@
 <div class="mainWrap">
     <div class="container">
-       
-        <div class="mainDiv"> 
+
+        <div class="mainDiv">
 
             <div class="rowWrap">
                 <div class="labelWrap">
                     Dish Name :
-                </div> 
+                </div>
                 <div class="inputWrap">
-                    <input type="text" name="name" #name="ngModel" (change)="onDishNameChanges($event)" [(ngModel)]="addItems.name" class="form-control">
+                    <input type="text" name="name" #name="ngModel"
+                        [(ngModel)]="addItems.name" class="form-control">
                 </div>
             </div>
 
             <div class="rowWrap">
                 <div class="labelWrap">
-                   Price :
+                    Price :
                 </div>
                 <div class="inputWrap">
-                    <input type="text" name="price" #price="ngModel" (change)="onPriceChanges($event)" [(ngModel)]="addItems.price" class="form-control">
+                    <input type="text" name="price" #price="ngModel" [(ngModel)]="addItems.price" class="form-control">
                 </div>
             </div>
 
             <div class="rowWrap">
                 <div class="labelWrap">
-                   Quantity :
+                    Quantity :
                 </div>
                 <div class="inputWrap">
-                    <input type="text" name="quantity" #quantity="ngModel" (change)="onQuantityChanges($event)" [(ngModel)]="addItems.quantity"  class="form-control">
+                    <input type="text" name="quantity" #quantity="ngModel" [(ngModel)]="addItems.quantity"
+                        class="form-control">
                 </div>
             </div>
 
             <div class="rowWrap">
-                    <div class="labelWrap">
-                      Photo:
+                <div class="labelWrap">
+                    Photo:
+                </div>
+
+                <div class="inputWrap">
+                    <input type="file" (change)="onPhotoChanges($event)" name="image" #image class="form-control">
+
+                </div>
+                <div class="preview" *ngIf="addItems.image">
+                    <div class="previewimage">
+                        <img id="imagesrc" src="{{addItems.image}}" #fileInput>
                     </div>
-                    <div class="inputWrap">
-                        <input type="file" name="image" #image="ngModel" (change)="onPhotoChanges($event)" [(ngModel)]="addItems.image" class="form-control">
-                    </div>
-            </div>
+                </div>
+            </div> 
 
             <div class="rowWrap">
                 <div class="labelWrap">
-                  Description :
+                    Description :
                 </div>
                 <div class="inputWrap">
-                    <input type="text" name="desc" #desc="ngModel" (change)="onDescriptionChanges($event)" [(ngModel)]="addItems.desc" class="form-control">
+                    <input type="text" name="desc" #desc="ngModel"
+                        [(ngModel)]="addItems.desc" class="form-control">
                 </div>
             </div>
 
             <div class="buttonWrap">
                 <div class="buttonWrapMemory">
-                <button class="btn btn-primary" (click)="addItem(addItems)">Save</button>
-            </div>
+                    <button class="btn btn-primary" (click)="addItem()">Save</button>
+                </div>
             </div>
         </div>
     </div>
 
-<div class="tableWrap">
-    <div class="table-responsive">
-    <table class="table table-hover table-bordered">
-        <tr>
-            <th style="min-width: 125px">Photo</th>
-            <th style="min-width: 125px">Dish Name</th>
-            <th style="min-width: 125px">Dish Price</th>
-            <th style="min-width: 125px">Quantity</th>
-            <th style="min-width: 125px">Description</th>
-            <th style="min-width: 125px">Update</th>
-            <th style="min-width: 125px">Delete</th>
-        </tr>
-        <tr *ngFor="let item of itemList">
-            <td><img src="{{item.image}}"></td>
-            <td>{{item.name}}</td>
-            <td>{{item.price}}</td>
-            <td>{{item.quantity}}</td>
-            <td>{{item.desc}}</td>
-            <td>
-                <button class="btn btn-primary" [routerLink]="['editcharges',item.id]">Update</button>
-            </td>
-            <td>
-                <button class="btn btn-primary" [routerLink]="['editcharges']">Delete</button>
-            </td>
-        </tr>
-    </table>
-</div></div>
+    <div class="tableWrap">
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered">
+                <tr>
+                    <th style="min-width: 125px">Photo</th>
+                    <th style="min-width: 125px">Dish Name</th>
+                    <th style="min-width: 125px">Dish Price</th>
+                    <th style="min-width: 125px">Quantity</th>
+                    <th style="min-width: 125px">Description</th>
+                    <th style="min-width: 125px">Update</th>
+                    <th style="min-width: 125px">Delete</th>
+                </tr>
+                <tr *ngFor="let item of itemList">
+                    <td><img src="{{item.image}}"></td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td>{{item.desc}}</td>
+                    <td>
+                        <button class="btn btn-primary" [routerLink]="['editcharges',item.id]">Update</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary" [routerLink]="['editcharges']">Delete</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </div>

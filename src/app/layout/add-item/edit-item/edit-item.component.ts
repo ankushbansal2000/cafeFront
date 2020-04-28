@@ -1,3 +1,4 @@
+import { Files } from './../../../model/FileResponse';
 import { AuthService } from './../../../service/auth.service';
 import { AddItems } from './../../../model/add-items';
 import { Component, OnInit } from '@angular/core';
@@ -21,25 +22,16 @@ export class EditItemComponent implements OnInit {
     this.dummy = new AddItems();
     this.getItemForUpdate();
   }
-  onDescriptionChanges(event) {
-    this.addItems.desc = event.target.value;
-  }
+
   onPhotoChanges(event) {
-    console.log(event);
     this.image = event.target.files[0];
+    this.addImage();
   }
-  onQuantityChanges(event) {
-    this.addItems.quantity = event.target.value;
-  }
-  onPriceChanges(event) {
-    this.addItems.price = event.target.value;
-  }
-  onDishNameChanges(event) {
-    this.addItems.name = event.target.value;
-  }
+
   goBack() {
     this.location.back();
   }
+
   getItemForUpdate() {
     this.apiService.getItemForUpdate(this.chargeId).subscribe(data => {
       this.addItems = data;
@@ -49,19 +41,20 @@ export class EditItemComponent implements OnInit {
       });
   }
 
+  addImage() {
+    let uploadData = new FormData();
+     uploadData.append('image', this.image);
+     this.apiService.addImage(uploadData).subscribe(data => {
+       const apiResponse = data as Files;
+       this.addItems.image = apiResponse.image;
+     },
+       error => {
+         alert(error.error.text);
+       });
+     }
 
   updateItem(uploadData) {
-    uploadData = new FormData();
-    uploadData.append('name', this.addItems.name);
-    uploadData.append('price', this.addItems.price);
-    uploadData.append('quantity', this.addItems.quantity);
-    uploadData.append('desc', this.addItems.desc);
-    if (this.image == undefined) {
-   //   uploadData.append('image', this.addItems.image);
-    } else {
-     // uploadData.append('image', this.image, this.image.name);
-    }
-    this.apiService.putItemForUpdate(this.chargeId, uploadData).subscribe(data => {
+    this.apiService.putItemForUpdate(this.chargeId, this.addItems).subscribe(data => {
       location.reload();
     },
       error => {

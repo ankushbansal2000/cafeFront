@@ -1,0 +1,19 @@
+<div class="tableWrap">
+    <h1>Pending Orders</h1>
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+            <tr>
+                <th style="width: 125px">Email Id</th>
+                <th style="width: 125px">Item Name</th>
+                <th style="width: 125px">Status</th>
+            </tr>
+            <tr *ngFor="let item of array">
+                <td>{{item.email}}</td>
+                <td>
+                <div *ngFor="let i of item.order">{{i.name}} * {{i.quantity}}</div>
+                </td>
+                <td><button (click)="onAcceptOrder(item.id)">Accept</button></td>
+            </tr>
+        </table>
+    </div>
+</div>

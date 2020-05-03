@@ -36,8 +36,11 @@ export class AuthService {
   getItems() {
     return this.httpClient.get<AddItems[]>(this.baseUrl + '/router/itemdetail/');
   }
-  getItemForData() {
-    return this.httpClient.get<OrderItem[]>(this.baseUrl + '/orderdetail/get/');
+  getItemForData(status : string) {
+    return this.httpClient.get<OrderItem[]>(this.baseUrl + '/orderdetail/get/?status=' + status);
+  }
+  onAcceptOrder(data : OrderItems, id) {
+    return this.httpClient.put<OrderItems[]>(this.baseUrl + '/router/updateOrderStatus/' + id  + '/', data);
   }
 
 }

@@ -1,16 +1,6 @@
-<div class="tableWrap">
-    <div class="table-responsive">
-        <table class="table table-hover table-bordered">
-            <tr>
-                <th style="width: 125px">Email Id</th>
-                <th style="width: 125px">Item Name</th>
-            </tr>
-            <tr *ngFor="let item of array">
-                <td>{{item.email}}</td>
-                <td>
-                <div *ngFor="let i of item.order">{{i.name}} * {{i.quantity}}</div>
-                </td>
-            </tr>
-        </table>
-    </div>
+<div class="order">
+<app-pending-order></app-pending-order>
+</div>
+<div class="order">
+<app-accept-order></app-accept-order>
 </div>

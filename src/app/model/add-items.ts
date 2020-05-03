@@ -10,6 +10,7 @@ export class AddItems {
 export class OrderItems {
     id: number;
     email: string;
+    status : string;
     order: OrderData[];
 }
 

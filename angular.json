@@ -120,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "cafe"
+    }
+  },
+  "defaultProject": "cafe",
+  "cli": {
+    "analytics": "529ca13d-6094-4960-9e04-c678a5f713d0"
+  }
 }
